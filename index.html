@@ -11,106 +11,81 @@ body {
     font-family: Arial, sans-serif;
     background: #050505;
     color: white;
-    overflow-x: hidden;
 }
 
 /* HEADER */
 header {
     position: fixed;
     width: 100%;
-    top: 0;
-    padding: 15px;
+    background: rgba(0,0,0,0.85);
+    padding: 10px;
     text-align: center;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
     z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 header img {
-    height: 80px;
+    height: 50px;
+    animation: fadeIn 2s ease;
 }
 
 /* HERO */
 .hero {
     height: 100vh;
-    background: url('35f4c4e9-638a-4fdd-9b38-78cf3d5372ea.jpeg') center/cover no-repeat;
+    background: url('hero.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    position: relative;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
 }
 
 .hero h1 {
-    position: relative;
-    font-size: 45px;
-    text-shadow: 0 0 40px rgba(255,255,255,0.4);
-    animation: fadeUp 1.5s ease forwards;
+    background: rgba(0,0,0,0.6);
+    padding: 25px;
+    font-size: 32px;
+    border-radius: 12px;
+    animation: fadeUp 1.5s ease;
 }
 
 /* SECTION */
 section {
-    padding: 80px 20px;
+    padding: 60px 20px;
     text-align: center;
 }
 
 h2 {
-    font-size: 32px;
-    margin-bottom: 40px;
-}
-
-/* SLIDER */
-.slider-container {
-    position: relative;
-    width: 90%;
-    max-width: 500px;
-    margin: auto;
-}
-
-.slider-container img {
-    width: 100%;
-    border-radius: 15px;
-}
-
-.after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    overflow: hidden;
-}
-
-.slider {
-    width: 100%;
+    font-size: 28px;
+    margin-bottom: 30px;
 }
 
 /* GALLERY */
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 }
 
 .gallery img {
-    width: 280px;
-    border-radius: 15px;
-    transition: 0.4s;
-    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    width: 100%;
+    border-radius: 12px;
+    transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .gallery img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 50px rgba(255,255,255,0.3);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0,150,255,0.4);
+}
+
+/* FOOTER SECTION */
+.footer {
+    background:#0a0a0a;
+}
+
+.footer p {
+    max-width:600px;
+    margin:auto;
+    line-height:1.6;
+    color:#ccc;
 }
 
 /* BUTTON */
@@ -119,32 +94,32 @@ h2 {
     bottom: 20px;
     right: 20px;
     background: #25D366;
-    padding: 15px 20px;
-    border-radius: 50px;
     color: white;
-    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 30px;
     font-weight: bold;
-    box-shadow: 0 0 25px rgba(37,211,102,0.7);
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(0,255,150,0.6);
 }
 
-/* ANIMATION */
+/* ANIMATIONS */
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from {opacity:0; transform:translateY(30px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
 }
 </style>
+
 </head>
 
 <body>
 
 <header>
-    <img src="logo.jpeg">
+    <img src="logo.png" alt="Clearglanz Logo">
 </header>
 
 <div class="hero">
@@ -152,39 +127,52 @@ h2 {
 </div>
 
 <section>
-    <h2>Vorher / Nachher</h2>
+    <h2>Vorher / Nachher Ergebnisse</h2>
 
-    <!-- SLIDER -->
-    <div class="slider-container">
-        <img src="IMG_1184.jpeg">
-        <div class="after">
-            <img src="IMG_1185.jpeg">
-        </div>
-        <input type="range" min="0" max="100" value="50" class="slider">
-    </div>
-
-    <!-- GALLERY -->
     <div class="gallery">
-        <img src="IMG_1186.jpeg">
-        <img src="IMG_1187.jpeg">
-        <img src="IMG_1188.jpeg">
-        <img src="IMG_1189.jpeg">
-        <img src="IMG_1190.jpeg">
+        <img src="before1.jpg">
+        <img src="after1.jpg">
+
+        <img src="before2.jpg">
+        <img src="after2.jpg">
+
+        <img src="before3.jpg">
+        <img src="after3.jpg">
     </div>
 </section>
 
-<a href="https://wa.me/4915565561816" class="whatsapp">
+<section class="footer">
+
+    <h2>Perfektion bis ins kleinste Detail</h2>
+
+    <p>
+        Bei Clearglanz steht nicht nur Sauberkeit im Fokus – sondern echte Perfektion.
+        Jedes Fahrzeug wird mit höchster Präzision und Leidenschaft behandelt, 
+        damit es wieder den Glanz bekommt, den es verdient.
+    </p>
+
+    <p style="margin-top:25px;">
+        Ob Aufbereitung, Politur oder Tiefenreinigung – wir bringen dein Auto 
+        auf ein neues Level. Hochwertige Produkte, professionelle Technik 
+        und ein Auge fürs Detail machen den Unterschied.
+    </p>
+
+    <h3 style="margin-top:40px;">Bereit für den nächsten Glanz?</h3>
+
+    <p style="margin-bottom:30px; color:#aaa;">
+        Schreib uns jetzt direkt auf WhatsApp und sichere dir deinen Termin.
+    </p>
+
+    <a href="https://wa.me/4915565561816"
+       style="background:#25D366; padding:15px 30px; border-radius:30px; color:white; text-decoration:none; font-weight:bold;">
+       Jetzt Termin sichern
+    </a>
+
+</section>
+
+<a class="whatsapp" href="https://wa.me/4915565561816">
     WhatsApp
 </a>
-
-<script>
-const slider = document.querySelector(".slider");
-const after = document.querySelector(".after");
-
-slider.addEventListener("input", () => {
-    after.style.width = slider.value + "%";
-});
-</script>
 
 </body>
 </html>
