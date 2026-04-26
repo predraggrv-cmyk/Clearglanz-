@@ -11,13 +11,19 @@ body {
     font-family: Arial, sans-serif;
     background: #050505;
     color: white;
+    overflow-x: hidden;
 }
 
 /* HEADER */
 header {
-    background: rgba(0,0,0,0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
     padding: 15px;
     text-align: center;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
 }
 
 header img {
@@ -26,64 +32,119 @@ header img {
 
 /* HERO */
 .hero {
-    height: 90vh;
-    background: url('IMG_1184.jpeg') center/cover no-repeat;
+    height: 100vh;
+    background: url('35f4c4e9-638a-4fdd-9b38-78cf3d5372ea.jpeg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
 }
 
 .hero h1 {
-    background: rgba(0,0,0,0.7);
-    padding: 20px;
-    font-size: 35px;
+    position: relative;
+    font-size: 45px;
+    text-shadow: 0 0 40px rgba(255,255,255,0.4);
+    animation: fadeUp 1.5s ease forwards;
 }
 
 /* SECTION */
 section {
-    padding: 50px 20px;
+    padding: 80px 20px;
     text-align: center;
 }
 
-/* GALERIE */
+h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* SLIDER */
+.slider-container {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.slider-container img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+}
+
+.slider {
+    width: 100%;
+}
+
+/* GALLERY */
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .gallery img {
-    width: 300px;
-    border-radius: 10px;
-    transition: 0.3s;
+    width: 280px;
+    border-radius: 15px;
+    transition: 0.4s;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
 .gallery img:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
+    box-shadow: 0 0 50px rgba(255,255,255,0.3);
 }
 
-/* WHATSAPP BUTTON */
+/* BUTTON */
 .whatsapp {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background: #25D366;
-    color: white;
     padding: 15px 20px;
     border-radius: 50px;
+    color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 0 25px rgba(37,211,102,0.7);
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-    <img src="IMG_1185.jpeg">
+    <img src="logo.jpeg">
 </header>
 
 <div class="hero">
@@ -91,8 +152,18 @@ section {
 </div>
 
 <section>
-    <h2>Vorher / Nachher Ergebnisse</h2>
+    <h2>Vorher / Nachher</h2>
 
+    <!-- SLIDER -->
+    <div class="slider-container">
+        <img src="IMG_1184.jpeg">
+        <div class="after">
+            <img src="IMG_1185.jpeg">
+        </div>
+        <input type="range" min="0" max="100" value="50" class="slider">
+    </div>
+
+    <!-- GALLERY -->
     <div class="gallery">
         <img src="IMG_1186.jpeg">
         <img src="IMG_1187.jpeg">
@@ -105,6 +176,15 @@ section {
 <a href="https://wa.me/4915565561816" class="whatsapp">
     WhatsApp
 </a>
+
+<script>
+const slider = document.querySelector(".slider");
+const after = document.querySelector(".after");
+
+slider.addEventListener("input", () => {
+    after.style.width = slider.value + "%";
+});
+</script>
 
 </body>
 </html>
